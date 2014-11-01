@@ -47,6 +47,8 @@ public class UploadHome extends Fragment {
                 new View.OnClickListener() {
                     public void onClick(View view) {
                         //switch to library
+                        Intent intent = new Intent(rootView.getContext(), PickPicture.class);
+                        rootView.getContext().startActivity(intent);
 
                     }
                 });

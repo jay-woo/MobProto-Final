@@ -20,6 +20,9 @@
         <activity
             android:name=".TakePicture"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".PickPicture"
+            android:screenOrientation="portrait" />
     </application>
 
     <!-- To access Google+ APIs: -->
