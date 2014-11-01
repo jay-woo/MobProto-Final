@@ -2,23 +2,24 @@ package grimwootier.com.olinadmissions;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+* Created by root on 10/30/14.
+*/
 public class TakePicture extends Activity {
 
     private Uri fileUri;
@@ -46,7 +47,7 @@ public class TakePicture extends Activity {
         // start the image capture Intent
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
-        }
+    }
 
 
     /** Create a file Uri for saving an image or video */
@@ -87,6 +88,38 @@ public class TakePicture extends Activity {
 
         return mediaFile;
     }
+/*
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                String[] fileColumn = {MediaStore.Images.Media.DATA};
+                Cursor cursor = getContentResolver().query(fileUri,
+                        fileColumn, null, null, null);
+                String contentPath = null;
+                if (cursor.moveToFirst()) {
+                    contentPath = cursor.getString(cursor
+                            .getColumnIndex(fileColumn[0]));
+
+                    Bitmap bmp = BitmapFactory.decodeFile(contentPath);
+                    ImageView img = (ImageView) findViewById(R.id.logo);
+                    img.setImageBitmap(bmp);
+
+
+                } else if (resultCode == RESULT_CANCELED) {
+                    Toast.makeText(this, "Capture Cancelled", Toast.LENGTH_LONG)
+                            .show();
+                } else {
+                    Toast.makeText(this, "Capture failed", Toast.LENGTH_LONG)
+                            .show();
+                }
+
+            }
+
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -114,5 +147,6 @@ public class TakePicture extends Activity {
             }
         }
     }
-    
+
 }
+

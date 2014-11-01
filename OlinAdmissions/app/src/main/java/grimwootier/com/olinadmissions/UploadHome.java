@@ -1,22 +1,20 @@
 package grimwootier.com.olinadmissions;
 
-import android.app.Activity;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.style.UpdateLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import java.sql.Timestamp;
 
 public class UploadHome extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_upload_home, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_upload_home, container, false);
 
         //Initiate all the buttons!
         final Button storyButton = (Button) rootView.findViewById(R.id.story_button);
@@ -38,6 +36,8 @@ public class UploadHome extends Fragment {
                 new View.OnClickListener() {
                     public void onClick(View view) {
                         //switch to camera
+                        Intent intent = new Intent(rootView.getContext(), TakePicture.class);
+                        rootView.getContext().startActivity(intent);
 
                     }
                 });
