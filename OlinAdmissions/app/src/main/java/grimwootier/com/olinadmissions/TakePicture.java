@@ -88,38 +88,6 @@ public class TakePicture extends Activity {
 
         return mediaFile;
     }
-/*
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
-                String[] fileColumn = {MediaStore.Images.Media.DATA};
-                Cursor cursor = getContentResolver().query(fileUri,
-                        fileColumn, null, null, null);
-                String contentPath = null;
-                if (cursor.moveToFirst()) {
-                    contentPath = cursor.getString(cursor
-                            .getColumnIndex(fileColumn[0]));
-
-                    Bitmap bmp = BitmapFactory.decodeFile(contentPath);
-                    ImageView img = (ImageView) findViewById(R.id.logo);
-                    img.setImageBitmap(bmp);
-
-
-                } else if (resultCode == RESULT_CANCELED) {
-                    Toast.makeText(this, "Capture Cancelled", Toast.LENGTH_LONG)
-                            .show();
-                } else {
-                    Toast.makeText(this, "Capture failed", Toast.LENGTH_LONG)
-                            .show();
-                }
-
-            }
-
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -127,7 +95,7 @@ public class TakePicture extends Activity {
             if (resultCode == RESULT_OK) {
                 // Image captured and saved to fileUri specified in the Intent
                 Toast.makeText(this, "Image saved to:\n" +
-                        data.getData(), Toast.LENGTH_LONG).show();
+                        fileUri.toString(), Toast.LENGTH_LONG).show();
             } else if (resultCode == RESULT_CANCELED) {
                 // User cancelled the image capture
             } else {
@@ -142,8 +110,12 @@ public class TakePicture extends Activity {
                         data.getData(), Toast.LENGTH_LONG).show();
             } else if (resultCode == RESULT_CANCELED) {
                 // User cancelled the video capture
+                Toast.makeText(this, "Capture Cancelled", Toast.LENGTH_LONG)
+                        .show();
             } else {
                 // Video capture failed, advise user
+                Toast.makeText(this, "Capture failed", Toast.LENGTH_LONG)
+                        .show();
             }
         }
     }
