@@ -1,6 +1,7 @@
 package grimwootier.com.olinadmissions;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,6 +28,12 @@ public class MainActivity extends Activity {
                     .add(R.id.container, new UploadHome())
                     .commit();
         }
+    }
+
+    public void switchFragment(Fragment fragment) {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
     }
 
 
