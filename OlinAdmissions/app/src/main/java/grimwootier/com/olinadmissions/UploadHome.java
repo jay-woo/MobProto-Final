@@ -91,7 +91,7 @@ public class UploadHome extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == Activity.RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
             Cursor cursor = activity.getContentResolver().query(selectedImage,
                     filePathColumn, null, null, null);
@@ -100,6 +100,7 @@ public class UploadHome extends Fragment {
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
+            activity.switchFragment(new UploadHome());
 
 //            Figure out where to put the picture
 //            ImageView imageView = (ImageView) findViewById(R.id.imgView);
@@ -112,6 +113,7 @@ public class UploadHome extends Fragment {
                 // Image captured and saved to fileUri specified in the Intent
                 Toast.makeText(activity, "Image saved to:\n" +
                         fileUri.toString(), Toast.LENGTH_LONG).show();
+                activity.switchFragment(new UploadHome());
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 // User cancelled the image capture
             } else {
@@ -139,6 +141,6 @@ public class UploadHome extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         this.activity = (MainActivity) activity;
-//        ((MainActivity) activity).switchFragment(new UploadHome());
+        super.onAttach(activity);
     }
 }
