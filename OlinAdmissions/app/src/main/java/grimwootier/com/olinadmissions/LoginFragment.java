@@ -26,6 +26,7 @@ import java.util.ArrayList;
  * Created by wooj on 10/29/14.
  */
 public class LoginFragment extends Fragment {
+    private MainActivity activity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,7 +69,7 @@ public class LoginFragment extends Fragment {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                activity.switchActivity(new SignupFragment());
             }
         });
 
@@ -93,5 +94,11 @@ public class LoginFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        this.activity = (MainActivity) activity;
+        super.onAttach(activity);
     }
 }

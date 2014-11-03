@@ -32,4 +32,10 @@ public class MainActivity extends Activity {
                     .commit();
         }
     }
+
+    public void switchActivity(Fragment fragment) {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
+    }
 }
