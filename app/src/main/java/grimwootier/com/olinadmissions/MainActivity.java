@@ -11,17 +11,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 
-
 public class MainActivity extends Activity {
+    ActionBar.Tab tab1, tab2;
+    Fragment storyList = new StoryList();
+    Fragment olinMap = new StoryList();
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new StoryList())
-                    .commit();
-        }
+
+        ActionBar actionBar = getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        tab1 = actionBar.newTab().setText("MAP");
+        tab2 = actionBar.newTab().setText("LIST");
+
+        tab1.setTabListener(new TabListener(storyList));
+        tab2.setTabListener(new TabListener(olinMap));
+
+        actionBar.addTab(tab1);
+        actionBar.addTab(tab2);
     }
 }
