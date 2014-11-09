@@ -15,20 +15,36 @@ public class StoryList extends Fragment {
 
     ListView list;
     String[] title = {
-            "Generic Story Title",
-            "Hey Look a Story",
-            "Olin Story",
-            "Students Did a Thing!",
-            "I <3 Olin",
-            "We made POEgress!",
-            "Hoppers Galore",
-            "Generic Story Title",
-            "Hey Look a Story",
-            "Olin Story",
-            "Students Did a Thing!",
-            "I <3 Olin",
-            "We made POEgress!",
-            "Hoppers Galore"
+            "MobProto Madness",
+            "3D Printing Cool Things",
+            "These Fruit Flies Though",
+            "So Many Frisbees",
+            "Fun Times with ORS",
+            "Unicycling Like a Boss",
+            "Sketching Hoppers",
+            "Watching The Legend of Korra",
+            "Computing Conversations",
+            "OFAC Burn",
+            "Go Soccer Team!",
+            "And Then I Blew an OpAmp...",
+            "Glass, Everywhere!",
+            "Town Hall Meeting"
+    } ;
+    String[] location = {
+            "Academic Center Room 113",
+            "Milas Hall Library",
+            "Campus Center Dining Hall",
+            "Great Lawn",
+            "Large Project Building",
+            "The O",
+            "Parcel B",
+            "West Hall Third Floor Lounge",
+            "East Hall First Floor Lounge",
+            "Lot D",
+            "Soccer Fields",
+            "Academic Center Room 426",
+            "Campus Center Pool Room",
+            "Milas Hall Auditorium"
     } ;
     Integer[] imageId = {
             R.drawable.olin1,
@@ -53,7 +69,7 @@ public class StoryList extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_story_list, container, false);
 
-        CustomList adapter = new CustomList(this.getActivity(), title, imageId);
+        CustomList adapter = new CustomList(this.getActivity(), title, imageId, location);
 
         list=(ListView)rootView.findViewById(R.id.story_list);
         list.setAdapter(adapter);
