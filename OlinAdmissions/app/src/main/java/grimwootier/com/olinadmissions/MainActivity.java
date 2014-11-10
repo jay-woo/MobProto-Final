@@ -14,8 +14,11 @@ import android.os.Build;
 
 import com.firebase.client.Firebase;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends Activity {
+    private ArrayList<Fragment> activeFragments = new ArrayList<Fragment>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +37,14 @@ public class MainActivity extends Activity {
     }
 
     public void switchActivity(Fragment fragment) {
+        activeFragments.add(fragment);
+
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
+    }
+
+    public ArrayList<Fragment> getActiveFragments() {
+        return activeFragments;
     }
 }

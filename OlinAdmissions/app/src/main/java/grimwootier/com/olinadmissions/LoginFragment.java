@@ -81,7 +81,13 @@ public class LoginFragment extends Fragment {
                 for(DataSnapshot child : dataSnapshot.getChildren()) {
                     String childUsername = child.getName().toString();
                     String childPassword = child.child("password").getValue().toString();
-                    Account childAccount = new Account(childUsername, childPassword);
+                    String childFirstName = child.child("firstname").getValue().toString();
+                    String childLastName = child.child("lastname").getValue().toString();
+                    String childOlinConnection = child.child("olinconnection").getValue().toString();
+
+                    Account childAccount = new Account(childUsername, childPassword,
+                                                       childFirstName, childLastName,
+                                                       childOlinConnection);
 
                     accounts.add(childAccount);
                 }
