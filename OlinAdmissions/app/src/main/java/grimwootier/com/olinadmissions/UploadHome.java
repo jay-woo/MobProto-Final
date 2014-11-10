@@ -53,7 +53,7 @@ public class UploadHome extends Fragment {
                 new View.OnClickListener() {
                     public void onClick(View view) {
                         //switch to story fragment
-
+                        activity.switchFragment(new ImageUploadFragment());
                     }
                 });
 
@@ -100,7 +100,7 @@ public class UploadHome extends Fragment {
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
-            activity.switchFragment(new UploadHome());
+            activity.switchFragment(new ImageUploadFragment());
 
 //            Figure out where to put the picture
 //            ImageView imageView = (ImageView) findViewById(R.id.imgView);
@@ -113,7 +113,7 @@ public class UploadHome extends Fragment {
                 // Image captured and saved to fileUri specified in the Intent
                 Toast.makeText(activity, "Image saved to:\n" +
                         fileUri.toString(), Toast.LENGTH_LONG).show();
-                activity.switchFragment(new UploadHome());
+                activity.switchFragment(new ImageUploadFragment());
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 // User cancelled the image capture
             } else {
