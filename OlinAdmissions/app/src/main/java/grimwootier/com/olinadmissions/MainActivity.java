@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void switchActivity(Fragment fragment) {
+    public void switchFragment(Fragment fragment) {
         activeFragments.add(fragment);
 
         getFragmentManager().beginTransaction()
