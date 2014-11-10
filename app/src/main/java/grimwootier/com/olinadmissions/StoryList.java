@@ -85,5 +85,3 @@ public class StoryList extends Fragment {
         return rootView;
     }
 }
-
-

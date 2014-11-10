@@ -41,5 +41,3 @@ public class TabMenu extends Fragment {
         return rootView;
     }
 }
-
-
